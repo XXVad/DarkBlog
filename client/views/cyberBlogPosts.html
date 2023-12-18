@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/cyberBlogPosts.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="hrefs">
+        <a href="./addPost.html" class="addpost">Add post</a>
+        <a href="./signIn.html" class="signIn">Sign In</a>
+        <a href="./signUp.html" class="signUp">Sign Up</a>
+      </div>
+      <div class="cybertext">DARKPOSTS</div>
+      <div class="contentt">
+        <div class="main-container">
+          <div id="postsContainer" class="postsContainer"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const savedNick = localStorage.getItem('usernickname');
+      document.addEventListener('DOMContentLoaded', () => {
+        const url = 'http://localhost:3000/cyberBlogPosts';
+        const options = {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        };
+        fetch(url, options)
+          .then((response) => response.json())
+          .then((posts) => {
+            console.log(posts);
+            const postsContainer = document.getElementById('postsContainer');
+            posts.forEach((post) => {
+              const postElement = document.createElement('div');
+              postElement.id = post._id;
+              postElement.classList.add('post');
+
+              const topPost = document.createElement('div');
+              topPost.classList.add('top-post');
+
+              const topTop = document.createElement('div');
+              topTop.classList.add('top-top');
+              topTop.innerHTML = `
+              <div class='from'>Ім'я: ${post.author}</div>
+              <div class='title'> Заголовок: ${post.title}</div>
+            `;
+              const content = document.createElement('div');
+              content.classList.add('content');
+              content.textContent = post.content;
+              topPost.appendChild(topTop);
+              topPost.appendChild(content);
+              if (savedNick === post.author || savedNick === 'admin') {
+                const icons = document.createElement('div');
+                icons.classList.add('icons');
+                icons.innerHTML = `
+                <img src="../public/icons/trash.svg" alt="" class ='delete' onclick="deletePost('${post._id}')">
+                <img src="../public/icons/edit.svg" alt="" class='edit' onclick="updateLink('${post._id}')">
+              `;
+                topPost.appendChild(icons);
+              }
+
+              postElement.appendChild(topPost);
+              postsContainer.appendChild(postElement);
+            });
+          })
+          .catch((error) => {
+            console.error('Помилка при виконанні запиту:', error);
+          });
+      });
+
+      const deletePost = (postId) => {
+        const url = `http://localhost:3000/deletePost/${postId}`;
+        const options = {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        };
+        fetch(url, options)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data.message);
+            const postElement = document.getElementById(postId);
+            if (postElement) {
+              postElement.remove();
+            }
+          })
+          .catch((error) => {
+            console.error('Помилка при видаленні посту:', error);
+          });
+      };
+
+      const updateLink = (postId) => {
+        window.location.href = `http://127.0.0.1:5500/client/views/editPost.html?postId=${postId}`;
+      };
+    </script>
+  </body>
+</html>

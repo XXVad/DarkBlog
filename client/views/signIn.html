@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignIn</title>
+    <link rel="stylesheet" href="../public/signInStyle.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <div class="header-flex">
+          <div class="enter-text">Sign In</div>
+          <a href="#" class="logo-ref"
+            ><img class="logo" src="../public/icons/logo.png" alt="Cyberblog"
+          /></a>
+        </div>
+        <div class="main">
+          <form class="loginForm" onsubmit="submitForm(event)">
+            <div class="username-flex">
+              <label for="nickname">Cybername</label>
+              <input
+                type="text"
+                id="nickname"
+                name="nickname"
+                placeholder="nickname"
+                autocomplete="nickname"
+                required
+              />
+            </div>
+            <div class="password-flex">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="password"
+                autocomplete="current-password"
+                required
+              />
+            </div>
+            <button
+              class="enter-button"
+              type="submit"
+              onsubmit="submitForm(event)"
+            >
+              <span class="button-text">Go</span>
+            </button>
+          </form>
+          <div class="lower-text-flex">
+            <div class="left-text">No Account?</div>
+            <a href="signUp.html" class="right-ref">SignUp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const submitForm = (event) => {
+        event.preventDefault();
+        var nickname = document.getElementById('nickname').value;
+        var password = document.getElementById('password').value;
+        var url = 'http://localhost:3000/signIn';
+        var options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({nickname, password}),
+        };
+        fetch(url, options)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.statusnum) {
+              localStorage.setItem('usernickname', data.nick);
+              window.location.href = `http://127.0.0.1:5500/client/views/cyberBlogPosts.html`;
+            } else {
+              alert(data.error);
+            }
+          })
+          .catch((error) => {
+            console.error(
+              'There has been a problem with your fetch operation:',
+              error
+            );
+          });
+      };
+    </script>
+  </body>
+</html>

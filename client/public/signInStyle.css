@@ -1,0 +1,199 @@
+@import url(https://fonts.googleapis.com/css?family=Stalinist+One:regular);
+@import url(https://fonts.googleapis.com/css?family=Ruslan+Display:regular);
+@import url(_normalize.css);
+
+.wrapper {
+  background: #000;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 700px;
+  @media (max-width: 1000px) {
+    margin-top: 5.4074vh;
+  }
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  width: 376px;
+  height: 61.2px;
+  margin-bottom: 45px;
+
+  @media (max-width: 1000px) {
+    width: 296px;
+  }
+}
+
+.enter-text {
+  color: #b279ff;
+  font-family: Stalinist One;
+  font-size: 31px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: flex-end;
+
+  @media (max-width: 1000px) {
+    font-size: 27px;
+  }
+}
+
+.logo-ref {
+  width: 120px;
+  height: 63px;
+}
+
+.logo {
+  max-width: 100%;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.username-flex,
+.password-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  color: #3f199a;
+  font-family: Stalinist One;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  @media (max-width: 1000px) {
+    font-size: 18px;
+  }
+}
+
+input {
+  border-image-source: linear-gradient(to left, #1f00df, #b100ff);
+  border-image-slice: 1;
+  background: rgba(255, 255, 255, 0);
+  height: 32.4px;
+  color: #3f199a;
+  padding-left: 20px;
+  outline: none;
+  font-size: 21px;
+  width: 350px;
+  @media (max-width: 1000px) {
+    font-size: 22px;
+    width: 270px;
+    height: 35.0998px;
+  }
+}
+
+input::placeholder {
+  background: linear-gradient(
+    90deg,
+    rgba(126, 34, 183, 0.4) 0%,
+    rgba(157, 6, 168, 0.4) 49.93%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: Ruslan Display;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media (max-width: 1000px) {
+  input::placeholder {
+    font-size: 22px;
+  }
+}
+
+.enter-button {
+  border-radius: 10px;
+  border: 5px solid #5820f1;
+  background: #3f199a;
+  height: 43.2px;
+  padding: 0;
+  cursor: pointer;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  @media (max-width: 1000px) {
+    height: 49.5px;
+    border-radius: 10px;
+    width: 200px;
+    margin-top: 10px;
+  }
+}
+
+.button-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: Stalinist One;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.lower-text-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 46px;
+  margin-bottom: 0px;
+  @media (max-width: 1000px) {
+    margin-top: 24.9999px;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 25px;
+  }
+}
+
+.left-text {
+  color: #3f199a;
+  font-family: Stalinist One;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  @media (max-width: 1000px) {
+    font-size: 16px;
+  }
+}
+
+.right-ref {
+  color: #b279ff;
+  font-family: Stalinist One;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: center;
+
+  @media (max-width: 1000px) {
+    font-size: 16px;
+  }
+}

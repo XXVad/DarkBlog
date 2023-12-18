@@ -1,0 +1,133 @@
+@import url(_normalize.css);
+@import url(https://fonts.googleapis.com/css?family=Orbitron:regular,500,600,700,800,900);
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P:regular);
+@import url(https://fonts.googleapis.com/css?family=DM+Mono:300,300italic,regular,italic,500,500italic);
+
+@import url(https://fonts.googleapis.com/css?family=Nova+Square:regular);
+.wrapper {
+  background-color: black;
+  min-width: 100wv;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 10px;
+}
+.addpost {
+  color: #3f199a;
+}
+.signIn {
+  color: #3f199a;
+}
+.signUp {
+  color: #3f199a;
+}
+.contentt {
+  display: flex;
+  flex-direction: column;
+}
+.hrefs {
+  align-self: flex-end;
+  display: flex;
+  column-gap: 10px;
+  margin-right: 30px;
+  margin-top: 10px;
+}
+.cybertext {
+  color: #b279ff;
+  font-family: Nova Square;
+  font-size: 41px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  letter-spacing: 10px;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  padding-bottom: 60px;
+}
+
+.postsContainer {
+  display: grid;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 25px;
+}
+.post {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.top-post {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: solid 2px;
+  border-radius: 20px;
+  padding: 10px;
+  background: linear-gradient(to left, #7a69e9, #41005d);
+  gap: 15px;
+}
+.top-top {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 3px solid #c9fffb;
+  background: rgba(200, 14, 14, 0);
+  padding-bottom: 5px;
+}
+.from {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  white-space: wrap;
+}
+.title {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  order: 2;
+}
+.content {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  order: 4;
+  word-wrap: break-word;
+}
+.icons {
+  order: 1;
+  display: flex;
+  justify-content: space-between;
+  width: 50px;
+  align-self: flex-end;
+  position: absolute;
+}
+.delete {
+  cursor: pointer;
+  width: 20px;
+}
+.edit {
+  cursor: pointer;
+  width: 20px;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/addPost.css" />
+    <title>AddPost</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="hrefs">
+        <a href="./cyberBlogPosts.html" class="addpost">Home</a>
+        <a href="./signIn.html" class="signIn">SignIn</a>
+        <a href="./signUp.html" class="signUp">SignUp</a>
+      </div>
+      <div class="cybertext">DARK ADDER</div>
+      <div class="contentt">
+        <div class="main-container">
+          <div id="postsContainer" class="postsContainer">
+            <div class="post">
+              <div class="top-post">
+                <div class="top-top">
+                  <div class="from">Cybername: <span id="from"></span></div>
+                </div>
+                <div class="titleinput-container">
+                  <label for="title" class="title">Title:</label>
+                  <input
+                    required
+                    type="text"
+                    class="titleinput"
+                    id="title"
+                    name="title"
+                    tabindex="1"
+                  />
+                </div>
+                <div class="contentinput-container">
+                  <label for="content" class="content">Content:</label>
+                  <input
+                    required
+                    type="text"
+                    class="contentinput"
+                    id="content"
+                    name="content"
+                    tabindex="2"
+                  />
+                </div>
+                <img
+                  src="../public/icons/send.svg"
+                  class="create"
+                  tabindex="3"
+                  onclick="addPost(event)"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const author = localStorage.getItem('usernickname');
+      document.getElementById('from').textContent = author;
+      const addPost = (event) => {
+        event.preventDefault();
+        const title = document.getElementById('title').value;
+        const content = document.getElementById('content').value;
+        const url = 'http://localhost:3000/addPost';
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({title, content, author}),
+        };
+        fetch(url, options)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log('Response from server:', data);
+            if (data.savedPost) {
+              window.location.href =
+                'http://127.0.0.1:5500/client/views/cyberBlogPosts.html';
+            }
+          })
+          .catch((error) => {
+            console.error(
+              'There has been a problem with your fetch operation:'
+            );
+          });
+      };
+    </script>
+  </body>
+</html>
